@@ -1,0 +1,48 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">YelpCamp</p>
+            <div class="list-group">
+                <li class="list-group-item active">Item 1</li>
+                <li class="list-group-item">Item 2</li>
+                <li class="list-group-item">Item 3</li>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail">
+                <img src="<%= campgrounds.image %>" alt="" class="img-responsive">
+                <div class="caption-full">
+                    <h4 class="pull-right">$0.00</h4>
+                    <h4> <a><%= campgrounds.name %></a> </h4>
+                    <p> <%= campgrounds.description %> </p>
+                </div>
+            </div>
+            <div class="well">
+                <div class="text-right">
+                    <a href="/campgrounds/<%= campgrounds._id %>/comments/new" class="btn btn-success">Add comment</a>
+                </div>
+
+                <hr>
+                <%
+                  campgrounds.comments.forEach(function(xComment) { %>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <strong><%= xComment.author %></strong>
+                                <span class="pull-right">10 days ago</span>
+                                <p>
+                                    <%= xComment.text %>
+                                </p>
+                            </div>
+                        </div>
+                  <% }); %>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<% include ../partials/footer %>
